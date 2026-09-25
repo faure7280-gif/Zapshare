@@ -1,26 +1,52 @@
-name: Compilar APK
+name: Compilar APK Release
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Configurar JDK 17
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 17
         uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: '17'
-          distribution: 'temurin'
+
+      - name: Crear clave temporal para firmar el APK
+        working-directory: zapshare
+        run: |
+          keytool -genkeypair \
+            -alias upload \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -keystore my-upload-key.jks \
+            -storepass android \
+            -keypass android \
+            -dname "CN=ZapShare, OU=App, O=ZapShare, L=Unknown, ST=Unknown, C=US"
+
       - name: Dar permisos a Gradle
-        run: chmod +x gradlew
-      - name: Compilar APK de Debug
-        run: ./gradlew assembleDebug
-      - name: Subir APK
+        run: chmod +x zapshare/gradlew
+
+      - name: Compilar APK Release
+        working-directory: zapshare
+        env:
+          KEYSTORE_PATH: my-upload-key.jks
+          STORE_PASSWORD: android
+          KEY_PASSWORD: android
+        run: ./gradlew assembleRelease
+
+      - name: Subir APK compilado
         uses: actions/upload-artifact@v4
         with:
-          name: mi-app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: zapshare-release-apk
+          path: zapshare/app/build/outputs/apk/release/app-release.apk
+          retention-days: 30
