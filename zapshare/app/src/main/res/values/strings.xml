@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ZapShare</string>
+    <string name="tagline">Transferencia ultrarrápida Wi-Fi Direct</string>
+    <string name="send">Enviar</string>
+    <string name="receive">Recibir</string>
+    <string name="dual_channel_mode">Canal Dual (2 en 2)</string>
+    <string name="channel_1">Canal A</string>
+    <string name="channel_2">Canal B</string>
+    <string name="speed_unit_mbs">MB/s</string>
+    <string name="history">Historial</string>
+    <string name="radar_title">Radar Wi-Fi Direct</string>
+    <string name="connecting">Conectando...</string>
+    <string name="connected">Conectado</string>
+    <string name="disconnected">Desconectado</string>
+    <string name="scanning_devices">Buscando dispositivos cercanos...</string>
+    <string name="create_group_host">Crear Grupo (Receptor)</string>
+    <string name="search_peers">Buscar Grupo (Emisor)</string>
+    <string name="select_files">Seleccionar Archivos</string>
+    <string name="apps_tab">Apps</string>
+    <string name="photos_tab">Fotos</string>
+    <string name="videos_tab">Videos</string>
+    <string name="music_tab">Música</string>
+    <string name="docs_tab">Documentos</string>
+    <string name="all_files_tab">Archivos</string>
+    <string name="clear_history">Limpiar historial</string>
+    <string name="no_transfers">No hay transferencias recientes</string>
+    <string name="transferring_simultaneously">Enviando archivos en paralelo (2 simultáneos)</string>
+</resources>

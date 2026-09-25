@@ -1,0 +1,6 @@
+{
+  "name": "ZapShare",
+  "description": "Transferencia ultrarrápida de archivos por Wi-Fi Direct con envío paralelo de dos en dos, radar p2p y alta velocidad.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
